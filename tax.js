@@ -43,4 +43,30 @@ function calculate_nhif(gross){
 
 let NHIF = calculate_nhif(gross_salary)
 
+// Calculating nssf
+function calculate_nssf(gross_salary){
+    let nssf
+    if (gross_salary>=18000){
+        gross_salary**0.06}
+    return nssf
+}
 
+let nssf = calculate_nssf(gross_salary)
+
+
+// Calculating NHDF
+function calculating_nhdf(gross_salary){
+    return gross_salary*0.015
+}
+
+let NHDF = calculating_nhdf(gross_salary)
+
+
+// Calculating taxable income
+function calculating_taxable_income(gross_salary,nssf,NHDF,NHIF){
+    return gross_salary-(nssf+NHDF+NHIF)
+}
+
+let taxable_income = calculating_taxable_income(gross_salary)
+
+// Calculating payee
