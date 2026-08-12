@@ -1,11 +1,15 @@
-let basic_salary = Number(prompt("Enter salary"));
-let benefits = Number(prompt("Enter benefits"));
+document.getElementById("tax_form").addEventListener("submit",function(event)){
+event.preventDefault()
+    
+let basic_salary = Number(document.getElementById("basic").value)
+let benefits = Number(document.getElementById("benefits").value)
 
 function calculate_gross_salary(basic,benefits){
     return benefits + basic
 }
 
 let gross_salary = calculate_gross_salary(basic_salary,benefits)
+document.getElementById("gross").innerHTML = gross_salary
 
 function calculate_nhif(gross){
     let nhif
@@ -42,6 +46,7 @@ function calculate_nhif(gross){
 }
 
 let NHIF = calculate_nhif(gross_salary)
+document.getElementById("nhif").innerHTML = NHIF
 
 // Calculating nssf
 function calculate_nssf(gross_salary){
@@ -70,3 +75,13 @@ function calculating_taxable_income(gross_salary,nssf,NHDF,NHIF){
 let taxable_income = calculating_taxable_income(gross_salary)
 
 // Calculating payee
+
+
+}
+
+
+
+
+
+
+
