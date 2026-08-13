@@ -57,7 +57,7 @@ function calculate_nssf(gross_salary){
 }
 
 let nssf = calculate_nssf(gross_salary)
-
+document.getElementById("nssf").innerHTML = nssf
 
 // Calculating NHDF
 function calculating_nhdf(gross_salary){
@@ -65,7 +65,7 @@ function calculating_nhdf(gross_salary){
 }
 
 let NHDF = calculating_nhdf(gross_salary)
-
+document.getElementById("nhdf").innerHTML = NHDF
 
 // Calculating taxable income
 function calculating_taxable_income(gross_salary,nssf,NHDF,NHIF){
@@ -73,8 +73,16 @@ function calculating_taxable_income(gross_salary,nssf,NHDF,NHIF){
 }
 
 let taxable_income = calculating_taxable_income(gross_salary)
+document.getElementById("tax").innerHTML = taxable_income
+
 
 // Calculating payee
+
+// function calculating_payee(taxable_income){
+//     if(taxable_income<=24000){
+//         taxable_income*0.1
+//     }else if(taxable_income>=8333 && taxable_income<=)
+// }
 
 
 }
