@@ -1,4 +1,4 @@
-document.getElementById("tax_form").addEventListener("submit",function(event)){
+document.getElementById("tax_form").addEventListener("submit",function(event){
 event.preventDefault()
     
 let basic_salary = Number(document.getElementById("basic").value)
@@ -45,14 +45,14 @@ function calculate_nhif(gross){
     return nhif
 }
 
-let NHIF = calculate_nhif(gross_salary)
-document.getElementById("nhif").innerHTML = NHIF
+let nhif = calculate_nhif(gross_salary)
+document.getElementById("nhif").innerHTML = nhif
 
 // Calculating nssf
-function calculate_nssf(gross_salary){
+function calculate_nssf(gross){
     let nssf
-    if (gross_salary>=18000){
-        gross_salary**0.06}
+    if (gross>=18000){
+        nssf = gross*0.06}
     return nssf
 }
 
@@ -60,32 +60,55 @@ let nssf = calculate_nssf(gross_salary)
 document.getElementById("nssf").innerHTML = nssf
 
 // Calculating NHDF
-function calculating_nhdf(gross_salary){
-    return gross_salary*0.015
+function calculating_nhdf(gross){
+    return gross*0.015
 }
 
 let NHDF = calculating_nhdf(gross_salary)
 document.getElementById("nhdf").innerHTML = NHDF
 
 // Calculating taxable income
-function calculating_taxable_income(gross_salary,nssf,NHDF,NHIF){
-    return gross_salary-(nssf+NHDF+NHIF)
+function calculating_taxable_income(gross,nssf,NHDF,NHIF){
+    return gross-(nssf+NHDF+NHIF)
 }
 
-let taxable_income = calculating_taxable_income(gross_salary)
+let taxable_income = calculating_taxable_income(gross,NHIF,nssf,NHDF)
 document.getElementById("tax").innerHTML = taxable_income
 
 
-// Calculating payee
-
-// function calculating_payee(taxable_income){
-//     if(taxable_income<=24000){
-//         taxable_income*0.1
-//     }else if(taxable_income>=8333 && taxable_income<=)
-// }
 
 
+function calculating_payee(taxable_income){
+    let relief = 2400
+    let payee
+    if(taxable_income<=24000){
+        payee = 0
+    }else if(taxable_income>=24000 && taxable_income<=32333){
+         payee = (2400 + (taxable_income - 24000) * 0.25)
+     }else if(taxable_income >= 32333 && taxable_income <= 500000 ){
+        payee = (2400 + (8333 * 0.25) +(( taxable_income - 32333)* 0.3))
+     }else if(taxable_income > 500000 && taxable_income <= 800000){
+         payee = (2400 + (8333 * 0.25) + (467667 * 0.3) + ((taxable_income - 500000) + 0.325))
+     }else{
+        payee = (2400 + (8333 * 0.25) + (467667 * 0.3) + (300000 * 0.325) +( (taxable_income - 800_000) * 0.35))
 }
+return payee - relief
+}
+
+let payee = calculating_payee(taxable_income)
+document.getElementById("payee").innerHTML = payee
+
+
+function calculating_net_salary(gross,NHDF,NHIF,nssf,payee){
+    return net_salary = gross - (NHIF+NHDF,nssf,payee)
+}
+
+let net_salary = calculating_net_salary(gross,NHDF,NHIF,nssf,payee)
+document.getElementById("net").innerHTML = net_salary
+
+
+
+})
 
 
 
