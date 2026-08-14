@@ -4,67 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
 </head>
 
 <body>
-    <form id="tax_form">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Basic Salary</label>
-            <input type="number" class="form-control" id="basic" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Benefits</label>
-            <input type="number" class="form-control" id="benefits">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
     <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Tax Category</th>
-                    <th scope="col">Category Output</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Gross Salary</th>
-                    <td id="gross"></td>
-                </tr>
-                <tr>
-                    <th>NHIF</th>
-                    <td id="nhif"></td>
-                </tr>
-                <tr>
-                    <th>NSSF</th>
-                    <td id="nssf"></td>
-                </tr>
-                <tr>
-                    <th>NHDF</th>
-                    <td id="nhdf"></td>
-                </tr>
-                <tr>
-                    <th>Taxable Income</th>
-                    <td id="tax"></td>
-                </tr>
-                <tr>
-                    <th>PAYEE</th>
-                    <td id="payee"></td>
-                </tr>
-                <tr>
-                    <th>Net Salary</th>
-                    <td id="net"></td>
-                </tr>
-            </tbody>
-        </table>
+        <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">TAX</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/my_tax">My Tax</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="itax">ITAX</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div>
+            {% with messages= get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
     </div>
 
+    {% block content %}
 
-    <script src="tax.js"></script>
+
+    {% endblock %}
+
+    <div style="color: rgb(35, 35, 197);">
+        <h6>TAX</h6>
+        <p>Filing support and tax guidance for individuals and small businesses across Kenya</p>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

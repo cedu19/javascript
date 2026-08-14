@@ -1,0 +1,62 @@
+    {% extends 'index.html' %}
+    {% block title %}Home{% endblock %}
+
+    {% block content %}
+    
+    <form id="tax_form">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Basic Salary</label>
+            <input type="number" class="form-control" id="basic" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Benefits</label>
+            <input type="number" class="form-control" id="benefits">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tax Category</th>
+                    <th scope="col">Category Output</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Gross Salary</th>
+                    <td id="gross"></td>
+                </tr>
+                <tr>
+                    <th>NHIF</th>
+                    <td id="nhif"></td>
+                </tr>
+                <tr>
+                    <th>NSSF</th>
+                    <td id="nssf"></td>
+                </tr>
+                <tr>
+                    <th>NHDF</th>
+                    <td id="nhdf"></td>
+                </tr>
+                <tr>
+                    <th>Taxable Income</th>
+                    <td id="tax"></td>
+                </tr>
+                <tr>
+                    <th>PAYEE</th>
+                    <td id="payee"></td>
+                </tr>
+                <tr>
+                    <th>Net Salary</th>
+                    <td id="net"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="tax.js"></script>
+
+{% endblock %}
