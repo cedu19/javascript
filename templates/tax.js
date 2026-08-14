@@ -100,7 +100,7 @@ document.getElementById("payee").innerHTML = payee
 
 
 function calculating_net_salary(gross,NHDF,NHIF,nssf,payee){
-    return net_salary = gross - (NHIF+NHDF,nssf,payee)
+    return net_salary = gross - (NHIF+NHDF+nssf+payee)
 }
 
 let net_salary = calculating_net_salary(gross_salary,NHDF,nhif,nssf,payee)

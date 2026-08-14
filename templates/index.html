@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
+    <title>TAX PROJECT 001</title>
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="tax.css">
 </head>
 
 <body>
     <div>
         <nav class="navbar bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">TAX</a>
+                <a class="navbar-brand fw-bolder icon-link" href="/"><em>TAX</em></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,42 +22,125 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                My Tax
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"
+                                        href="https://www.kra.go.ke/individual/filing-paying/types-of-taxes/value-added-tax">V.A.T.</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://www.kra.go.ke/individual/filing-paying/types-of-taxes/paye">P.A.Y.E.</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://www.kra.go.ke/individual/importing/learn-about-importation/customs-bonds">Custom
+                                        Duty</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/my_tax">My Tax</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="itax">ITAX</a>
+                            <a class="nav-link" href="https://itax.kra.go.ke/KRA-Portal/">ITAX</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div>
-            {% with messages= get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-            <div class="alert alert-{{category}} alert-dismissible" role="alert">
-                {{message}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
+        <div class="table2 table-wrap2 mt-2 mb-4 bg-primary-subtle">
+            <form id="tax_form">
+                <div class="mb-3 ">
+                    <label for="exampleInputEmail1" class="form-label fs-5 fw-bolder">Basic Salary</label>
+                    <input type="number" class="form-control" id="basic" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fs-5 fw-bolder">Benefits</label>
+                    <input type="number" class="form-control" id="benefits">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <div class="table-wrap mb-5">
+            <table class="table">
+                <thead>
+                    <tr class="fs-5 fw-medium">
+                        <th scope="col"><em>Tax Category</em></th>
+                        <th scope="col"><em>Category Output</em></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Gross Salary</th>
+                        <td id="gross"></td>
+                    </tr>
+                    <tr>
+                        <th>NHIF</th>
+                        <td id="nhif"></td>
+                    </tr>
+                    <tr>
+                        <th>NSSF</th>
+                        <td id="nssf"></td>
+                    </tr>
+                    <tr>
+                        <th>NHDF</th>
+                        <td id="nhdf"></td>
+                    </tr>
+                    <tr>
+                        <th>Taxable Income</th>
+                        <td id="tax"></td>
+                    </tr>
+                    <tr>
+                        <th>PAYEE</th>
+                        <td id="payee"></td>
+                    </tr>
+                    <tr>
+                        <th>Net Salary</th>
+                        <td id="net"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    {% block content %}
-
-
-    {% endblock %}
-
-    <div style="color: rgb(35, 35, 197);">
-        <h6>TAX</h6>
-        <p>Filing support and tax guidance for individuals and small businesses across Kenya</p>
+    <div class="bg-secondary-subtle">
+        <div style="color: rgb(35, 35, 197);">
+            <h5>TAX</h5>
+            <p class="tagline">Filing support and tax guidance <br> for individuals and small businesses across Kenya.
+            </p>
+            <span class="filing-status">2025 filing season open</span>
+        </div>
+        <div class="col">
+            <h4 class="fs-4">Filing</h4>
+            <ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Address
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="">Timewise tower</a>
+                        </li>
+                        <li><a class="dropdown-item" href="">Timewise street</a></li>
+                        <li><a class="dropdown-item" href="">P.O. Box 456-5599</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Phone No. +254-106-422-220</a></li>
+                <li><a href="#">Email:mytax2025@gmail.com</a></li>
+                <li>
+                    <a href="#">Key deadlines</a>
+                    <span class="deadline-note">Next: 30 Jun 2026</span>
+                </li>
+            </ul>
+        </div>
     </div>
 
+
+
+
+    <script src="tax.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
